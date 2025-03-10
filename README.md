@@ -1,81 +1,98 @@
-# API Development Assignment - README
+API Development Assignment - README
+Overview
+This project focuses on designing and implementing APIs to manage various data entities, including student records, product details, and category management for an online store. The development process involves both PHP and Laravel frameworks. Below is a structured breakdown of the tasks and implementation guidelines.
 
-## Introduction
-This assignment involves creating APIs to manage various data entities, including student information, products, and categories for an online store. The implementation will utilize both PHP and Laravel frameworks. Below is a structured breakdown of the activities and implementation steps.
+Task 1: Representing Student Data in XML and JSON
+In this section, you will create XML and JSON formats to represent a student’s details, including:
 
-## Activity 1: Student Information Representation (XML and JSON)
-In this activity, you will create XML and JSON structures to represent a student. The student’s details should include their name, age, gender, and a list of subjects they are enrolled in. Each subject must have a subject name and a grade.
+Name
+Age
+Gender
+List of enrolled subjects (each with a subject name and grade)
+Additionally, you will write XQuery expressions to retrieve specific details, such as:
 
-Additionally, you will write XQuery expressions to retrieve specific data. The queries should fetch the student’s name and age, as well as retrieve the names of all subjects the student is enrolled in.
+The student's name and age
+The names of all subjects the student is taking
+Task 2: Building a Simple Product API with PHP
+This part involves developing a basic API in PHP to handle product management using RESTful endpoints. The following functionalities should be implemented:
 
-## Activity 2: Simple API for Managing Products (PHP)
-This activity focuses on developing a simple API in PHP to manage products. You will implement the following RESTful API endpoints:
+GET /products → Fetch all products
+GET /products/{id} → Retrieve a product by its ID
+POST /products → Add a new product
+PUT /products/{id} → Update an existing product’s details
+DELETE /products/{id} → Remove a product by its ID
+Each product should have an ID, name, description, and price. The product data will be stored in a PHP array for simplicity, and responses should be formatted in JSON.
 
-- `GET /products` - Retrieve all products.
-- `GET /products/{id}` - Retrieve a specific product by ID.
-- `POST /products` - Add a new product.
-- `PUT /products/{id}` - Update an existing product by ID.
-- `DELETE /products/{id}` - Remove a product by ID.
+Task 3: Category Management API Using Laravel
+In this activity, you will develop an API using Laravel to manage product categories in an online store. The API will interact with a MySQL database named online_store, containing a categories table with the following columns:
 
-Each product should include an ID, name, description, and price. The product data will be stored in an array within PHP for simplicity. All API responses should be returned in JSON format.
+id
+name
+lft
+rgt
+created_at
+updated_at
+The Nested Set Model will be used to handle hierarchical categories. The API should support the following operations:
 
-## Activity 3: Online Store Category Management API (Laravel)
-This activity involves setting up a Laravel-based API to manage product categories in an online store. You will create a MySQL database named `online_store` and define a `categories` table with the following fields: `id`, `name`, `lft`, `rgt`, `created_at`, and `updated_at`.
+GET /categories → Retrieve all categories in XML format
+GET /categories/{id} → Fetch a specific category by ID in XML format
+POST /categories → Add a new category (accepts XML input with name and parent_id)
+PUT /categories/{id} → Modify an existing category (accepts XML input with name)
+DELETE /categories/{id} → Remove a category and return a success response in XML
+Error handling and validation should be implemented to ensure that invalid requests return appropriate XML-formatted error responses. The implementation will involve Laravel routing, controllers, models, and unit tests to validate the API's functionality.
 
-To manage hierarchical categories efficiently, you will implement the **Nested Set Model** using Laravel’s Eloquent ORM. The API should support the following routes:
+Task 4: Banking System API with Laravel
+This section requires the development of an API for a banking system using Laravel. The system will support essential banking operations, such as:
 
-- `GET /categories` - Retrieve all categories in XML format.
-- `GET /categories/{id}` - Retrieve a specific category by ID in XML format.
-- `POST /categories` - Create a new category (accept XML with `name` and `parent_id` fields).
-- `PUT /categories/{id}` - Update an existing category (accept XML with `name`).
-- `DELETE /categories/{id}` - Delete a category and return a success message in XML format.
+Account creation
+Deposits
+Withdrawals
+Prerequisites
+Ensure your development environment includes the following:
 
-Proper error handling and validation should be implemented to return error responses in XML format for invalid requests. You will use Laravel’s routing, controllers, and models to implement this functionality. Additionally, unit tests should be written to ensure each endpoint functions correctly.
+PHP (version 8.0 or later)
+Composer
+MySQL or another compatible database
+Laravel (version 9 or newer)
+Node.js & NPM (for managing frontend assets)
+Installation Guide
+Backend Setup
+Clone the project repository.
+Install required dependencies using:
+sh
+Copy
+Edit
+composer install
+Copy .env.example to .env and configure database settings.
+Generate an application key:
+sh
+Copy
+Edit
+php artisan key:generate
+Run database migrations and seed initial data:
+sh
+Copy
+Edit
+php artisan migrate  
+php artisan db:seed  
+Start the Laravel development server:
+sh
+Copy
+Edit
+php artisan serve  
+Frontend Setup
+Install frontend dependencies:
+sh
+Copy
+Edit
+npm install  
+Compile frontend assets:
+sh
+Copy
+Edit
+npm run dev  
+API Testing and Documentation
+APIs can be tested using tools like Postman or Swagger. The Swagger UI will automatically generate API documentation, which can be accessed through a designated URL.
 
-## Activity 4: Develop APIs for Your Project - Laravel Bank System
-This activity involves building a banking system using Laravel. The system will support fundamental banking operations such as creating accounts, making deposits, and processing withdrawals.
-
-To set up the project, ensure that the following dependencies are installed on your system:
-- PHP (version 8.0 or higher)
-- Composer
-- MySQL (or any preferred database system)
-- Laravel (version 9 or higher)
-- Node.js and NPM (for frontend asset management)
-
-### Installation Instructions
-1. Clone the repository containing the project files.
-2. Install backend dependencies by running:
-   ```bash
-   composer install
-   ```
-3. Configure the environment file by copying `.env.example` to `.env` and setting up the database connection.
-4. Generate the application key by executing:
-   ```bash
-   php artisan key:generate
-   ```
-5. Run database migrations and seed data with:
-   ```bash
-   php artisan migrate
-   php artisan db:seed
-   ```
-6. Start the Laravel development server using:
-   ```bash
-   php artisan serve
-   ```
-
-### Frontend Setup
-For the frontend, install dependencies using:
-```bash
-npm install
-```
-Then compile frontend assets with:
-```bash
-npm run dev
-```
-
-## API Documentation
-The API can be tested using **Postman** or **Swagger**. The **Swagger UI** will automatically generate API documentation, which can be accessed through a specified URL.
-
-## Conclusion
-This assignment provides hands-on experience in API development, covering XML/JSON data handling, RESTful API creation with PHP, hierarchical category management with Laravel, and building a banking system API. By following these structured guidelines, you will develop a well-functioning and maintainable API system.
-
+Conclusion
+This project provides practical experience in API development, covering XML/JSON data handling, RESTful API implementation in PHP, category management using Laravel’s Nested Set Model, and building a banking system API. Following these structured steps will help create a robust and maintainable API solution.
